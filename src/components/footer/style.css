@@ -1,0 +1,66 @@
+.footer {
+    height: 519px;
+    background-color: #2D2B2F;
+    display: grid;
+    color: aliceblue;
+}
+
+.contacts-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 49px;
+}
+
+.subscription {
+    margin-left: 343px;
+}
+
+.contacts-header {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35.16px;
+    text-align: left;
+}
+
+.contacts-item {
+    margin-top: 30px;
+    padding: 0;
+    margin-left: 2px;
+}
+
+.input {
+    width: 447px;
+}
+
+.social-media-items {
+    display: flex;
+    padding: 0;
+}
+
+.icon-media {
+    margin-right: 49px;
+}
+
+.icon-contacts {
+    margin-right: 36px;
+}
+
+.under-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.scroll-to-top-button {
+    width: 36px;
+    height: 36px;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  

@@ -1,0 +1,99 @@
+* {
+    font-size: Roboto;
+}
+
+.ticket {
+    display: flex;
+    width: 959px;
+    height: 354px;
+    border: 1px solid #C4C4C4;
+    background: #FFFFFF;
+}
+
+.info-train-container {
+    width: 197px;
+    height: 354px;
+    background: #E4E0E9;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.train-icon {
+    margin-top: 58px;
+    margin-left: 53px;
+}
+
+.train-number {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28.13px;
+    text-align: center;
+    margin-top: 17px;
+    color: #3E3C41;
+} */
+
+.info-directions-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.there-direction,
+.from-there-direction {
+    display: flex;
+    margin-top: 54px;
+    margin-left: 39px;
+}
+
+.there-direction {
+    margin-bottom: 20px;
+}
+
+.info-direction-arrival,
+.info-direction-departure {
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+.info-time-from,
+.info-time-to {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.13px;
+    text-align: left;
+    color: #000000;
+}
+
+.info-city-from,
+.info-city-to {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21.09px;
+    text-align: left;
+}
+
+.info-station-from,
+.info-station-to {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 18.75px;
+    text-align: left;
+    color: #928F94;
+}
+
+.vertical-line {
+    width: 1px;
+    height: 355px;
+    border-left: 1px dashed #E5E5E5;
+    border-radius: 0.5px;
+    margin: 0 20px;
+}
+
+.item-info-seats {
+    margin-top: 37px;
+}
+
+.common-count-seats {}
+

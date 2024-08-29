@@ -1,0 +1,143 @@
+* {
+    font-family: Roboto;
+}
+
+.info-passanger-container {
+    width: 960px;
+    height: 830px;
+}
+
+.info-passanger-container .header-info-passanger-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    background-color: #fff;
+    padding: 1em;
+}
+
+.info-passanger-form {
+    border-top: 1px solid #dcdcdc;
+}
+
+.all-name-container {
+    display: flex;
+    margin-top: 45px;
+}
+
+.name {
+    width: 281px;
+    height: 50px;
+    min-height: 50px;
+}
+
+.gender {
+    width: 281px;
+    height: 50px;
+    min-height: 50px;
+    margin-top: 38px;
+}
+
+.p-field label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.gender-birthday-container {
+    display: flex;
+    margin-top: 45px;
+}
+
+.gender-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-gender-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.header-gender {
+    margin-bottom: 11px;
+}
+
+.gender-button {
+    display: flex;
+    font-size: 30px;
+    font-size: 30px;
+    font-weight: 900;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #928F94;
+    border-radius: 4.5px;
+    margin-right: 1px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #000;
+    background-color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    outline: none;
+}
+
+.gender-button.selected {
+    background-color: orange;
+}
+
+.gender-button:last-child {
+    margin-right: 0;
+}
+
+.birthday .p-inputtext {
+    width: 240px;
+    min-height: 50px;
+}
+
+.p-datepicker.p-component.p-ripple-disabled {
+    width: 240px;
+    min-width: 240px;
+}
+
+.p-datepicker-group-container .p-datepicker-group {
+    width: 100%;
+    margin-left: -6px;
+}
+
+.limited-mobility-container {
+    margin-top: 45px;
+}
+
+.document {
+    width: 205px;
+    height: 50px;
+}
+
+.about-documents-container {
+    margin-top: 45px;
+    display: flex;
+}
+
+.input-with-mask {
+    font-size: 24px;
+    color: #292929;
+    letter-spacing: 3px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    padding: 0.5em;
+    width: 205px;
+    min-height: 50px;
+    height: 50px;
+}
+
+.next-passenger-container {
+    display: flex;
+    justify-content: flex-end; /* Выравнивание по правому краю */
+    margin-top: 45px; /* Отступ сверху между блоками */
+}
+
+.next-passenger {
+    border: solid #292929 2px;
+    color: #292929;
+}

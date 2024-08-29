@@ -1,0 +1,58 @@
+* {
+    font-family: Roboto;
+}   
+
+
+.search-form-filters {
+    width: 364px;
+    height: 1012px;
+    display: flex;
+    flex-direction: column;
+    background-color: #3E3C41;
+    margin-left: 40px;
+    margin-bottom: 500px;
+}
+
+.inputs-date-filters {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    position: relative;
+    gap: 25px;
+    margin-bottom: 33px;
+}
+
+.input-header-filters {
+    font-size: 30px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-left: 30px;
+}
+
+.input-date-filters .p-inputtext{
+    width: 295px;
+    margin-left: 29px;
+    right: 1rem;
+}
+
+.input-date-filters .p-float-label label {
+    position: absolute;
+    top: 50%;
+    font-size: 1em;
+    color: grey;
+    pointer-events: none;
+    width: 295px;
+}
+
+.p-float-label label {
+    left: 3rem;
+}
+
+.icon-search-data-filters {
+    position: absolute;
+    top: 50%;
+    right: 4.5rem;
+    pointer-events: none;
+    color: grey;
+    font-size: 1.5em;
+}

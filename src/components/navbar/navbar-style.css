@@ -1,0 +1,20 @@
+
+.navbar {
+    display: flex;
+    height: 94px;
+    width: 100%;
+    background-color: #292929;
+    margin-top: 64px;
+  }
+  
+  .navbar-items {
+    display: flex;
+    color: #FFFFFF;
+    font-size: 30px;
+    margin-left: 258px;
+  }
+  
+  .navbar-item {
+    margin-right: 63px;
+  }
+  

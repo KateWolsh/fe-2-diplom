@@ -1,0 +1,45 @@
+* {
+    font-family: Roboto;
+}
+
+.cards-last-tikets-container {
+    width: 360px;
+    height: 161px;
+    background-color: #FFFFFF;
+    margin-bottom: 18px;
+}
+
+.p-card-body {
+    border: 1px solid #C4C4C4;
+}
+
+.last-ticket-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+}
+
+.last-ticket-from-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.last-ticket-to-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end
+}
+
+.p-col-12 .p-md-4 .ticket-card {
+    margin-bottom: 2rem;
+    color: black;
+}
+
+.last-ticket-city {
+    color: black;
+}
+
+.last-ticket-station {
+    color: black;
+}

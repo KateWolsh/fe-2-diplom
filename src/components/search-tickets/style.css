@@ -1,0 +1,106 @@
+* {
+    font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-family: Roboto;
+}
+
+.search-form {
+    height: 574px;
+    width: 730px;
+    background: #292929CC;
+    padding-left: 21px;
+    padding-right: 24px;
+    position: relative;
+}
+
+.inputs-wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.direct-form-container {
+    margin-top: 79px;
+}
+
+.header-direct {
+    font-size: 30px;
+    line-height: 35.16px;
+    color: #FFFFFF;
+}
+
+.pi-refresh {
+    margin: auto;
+}
+.inputs-direction {
+    display: flex;
+    margin-top: 25px;
+    gap: 10px;
+}
+
+.date-form-container {
+    margin-top: 61px;
+}
+
+.header-date {
+    font-size: 30px;
+    line-height: 35.16px;
+    color: #FFFFFF;
+}
+
+.inputs-date {
+    display: flex;
+    margin-top: 25px;
+    gap: 40px;
+}
+
+.p-inputtext {
+    width: 325px;
+    min-height: 60px;
+    color: black;
+}
+
+.icon-search-form {
+    position: absolute;
+    top: 50%;
+    right: 0.5em;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: grey;
+    font-size: 1.5em;
+}
+
+.btn-main {
+    width: 323px;
+    background-color: #FFA800;
+    color: black;
+    font-size: 24px;
+    position: absolute;
+    bottom: 60px;
+    right: 24px;
+    border: 0;
+}
+
+.p-datepicker.p-component.p-ripple-disabled {
+    width: 295px;
+    min-width: 295px;
+}
+
+.p-datepicker-group-container {
+    width: 100%;
+}
+
+.p-datepicker {
+    padding: 0;
+    margin: 0;
+}
+
+.p-datepicker-calendar-container,
+.p-datepicker-calendar {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.p-datepicker-calendar {
+    width: 100%;
+    table-layout: fixed;
+}
+

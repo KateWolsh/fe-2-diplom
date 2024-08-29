@@ -1,0 +1,25 @@
+.subscription-header {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35.16px;
+    text-align: left;
+}
+
+.send-email {
+    display: flex;
+    margin-bottom: 44px;
+}
+
+.input {
+    width: 447px;
+}
+
+.primary {
+    color: rgb(241, 235, 235);
+    margin-left: 33px;
+    background-color: inherit;
+}
+
+.send-subscription {
+    border: solid 2px;
+}
