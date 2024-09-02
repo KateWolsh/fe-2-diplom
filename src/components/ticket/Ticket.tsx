@@ -45,10 +45,11 @@ export const Ticket = () => {
                     </div>
                 </div>
             </div>
-            <div className="vertical-line"></div>
+            <div className="vertical-line-ticket"></div>
             <div style={{ position: "relative" }} className="info-seats-container">
                 <div style={{ display: "flex"}} className="item-info-seats">
                     <span style={{ color: '#3E3C41', fontSize: '16px', marginRight: "35px" }} className="type-seat">Купе</span>
+                    <Tooltip target=".common-count-seats" content="Верхние места: 50 (от 300 руб) \nНижние места: 40 (от 300 руб)" className="tooltip-count-seats" />
                     <span style={{ color: '#FFA800', fontSize: '16px', marginRight: "55px" }} className="common-count-seats">90</span>
                     <div style={{marginTop: "-6px"}} className="ticket-price">
                             <span style={{ color: '#928F94', fontSize: '16px' }}>от </span>
@@ -59,7 +60,9 @@ export const Ticket = () => {
                 <div className="avalable-filters-container">
                     <img  src="" alt="icon-filter" />
                 </div>
-                <Button 
+
+            </div>
+            <Button 
                     style={{ 
                     position: "absolute", 
                     bottom: "12", 
@@ -69,8 +72,6 @@ export const Ticket = () => {
                     background: "#FFA800"
                     }}
                     label="Выбрать места" />
-            </div>
-
         </div>
 
     )

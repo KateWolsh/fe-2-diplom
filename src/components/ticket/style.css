@@ -83,7 +83,7 @@
     color: #928F94;
 }
 
-.vertical-line {
+.vertical-line-ticket {
     width: 1px;
     height: 355px;
     border-left: 1px dashed #E5E5E5;
@@ -95,5 +95,37 @@
     margin-top: 37px;
 }
 
-.common-count-seats {}
+/* Стили для тултипа */
+.tooltip-count-seats {
+    width: 276px;
+    height: 101px;
+    padding: 10px;
+    color: white; 
+    background-color: #cac8c8;
 
+    top: 5;
+    left: 50;
+    transform: translateY(100%);
+    border-radius: 5px 0px 0px 0px;
+    opacity: 1;
+    border-radius: 5px 0px 0px 0px;
+    background-color: #cac8c8;
+
+    font-size: 14px; 
+    opacity: 1; 
+}
+
+.tooltip-count-seats .p-tooltip-arrow {
+    display: none; /* Скрыть стрелку тултипа */
+}
+
+.tooltip-count-seats {
+    position: absolute;
+    top: 1020px; /* Позиционирование по вертикали */
+    left: 1384px; /* Позиционирование по горизонтали */
+    gap: 0px;
+}
+.p-tooltip {
+    background-color: #cac8c8;
+
+} 

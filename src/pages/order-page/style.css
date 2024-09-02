@@ -1,6 +1,9 @@
 * {
   font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+.content-order {
+  display: flex;
+}
 
 .header-container-order {
   height: 596px;

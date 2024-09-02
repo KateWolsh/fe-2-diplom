@@ -1,0 +1,54 @@
+* {
+    font-family: Roboto;
+}
+
+.select-seats-container {
+    width: 959px;
+    height: 1774px;
+    border: 1px solid #C4C4C4;
+}
+
+.btn-another-train {
+    color: black;
+    width: 325px;
+    height: 60px;
+    border: 1px solid #292929;
+    font-family: Roboto;
+    font-size: 24px;
+}
+
+.icon-train
+.about-train {
+    width: 957px;
+    height: 123px;
+    background-color: "#F7F6F6";
+}
+
+.time-from,
+.time-to {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.city-from,
+.city-to {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.station-from,
+.station-to {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: left;
+    color: #928F94;
+}
+
+.hour,
+.minutes {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+}

@@ -12,6 +12,7 @@ export const SearchProvider: React.FC<{ children: ReactNode }> = ({ children }) 
 
   const [priceFrom, setPriceFrom] = useState<number>(0);
   const [priceTo, setPriceTo] = useState<number>(0);
+  //поделить как фильтры на 1-2 группы
   const [startDepartureHourFrom, setStartDepartureHourFrom] = useState<number>(0);
   const [startDepartureHourTo, setStartDepartureHourTo] = useState<number>(1440);
   const [startArrivalHourFrom, setStartArrivalHourFrom] = useState<number>(0);

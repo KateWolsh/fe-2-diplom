@@ -4,10 +4,11 @@ import Footer from '../../components/footer/Footer'
 import SearchTickets from '../../components/search-tickets/SearchTickets'
 import SearchTicketsWithFilters from '../../components/search-tickets-with-fiters/SearchTicketsWithFilters'
 // import LastTickets from '../../components/last-tickets/LastTikets'
-import InfoAboutPassenger from '../../components/info-about-passenger/InfoAboutPassenger'
+// import InfoAboutPassenger from '../../components/info-about-passenger/InfoAboutPassenger'
 import Ticket from '../../components/ticket/Ticket'
 import { useSearchContext } from '../../hooks/useSearchContext ';
 import { useEffect } from 'react'
+import { SelectSeats } from '../../components/select-seats/SelectSeats'
 
 const OrderPage = () => {
   const { fromDate, toDate, filters, fromCity, toCity } = useSearchContext();
@@ -20,8 +21,8 @@ const OrderPage = () => {
     useEffect(() => {
       const buildParams = () => {
         return {
-          fromCity: fromCity,
-          toCity: toCity,
+          from_city_id: fromCity?._id,
+          to_city_id: toCity?._id,
           fromDate: fromDate,
           toDate: toDate,
           price_from: priceFrom,
@@ -90,9 +91,11 @@ const OrderPage = () => {
       </div>
       <div className='content-order'>
         <SearchTicketsWithFilters />
+        <SelectSeats />
       </div>
       <Ticket />
-      <InfoAboutPassenger />
+      {/* <LastTickets /> */}
+      {/* <InfoAboutPassenger /> */}
       <Footer />
     </div>
   )
