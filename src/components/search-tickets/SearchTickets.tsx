@@ -5,11 +5,9 @@ import { FloatLabel } from 'primereact/floatlabel';
 import { Calendar } from 'primereact/calendar';
 import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { useState } from 'react';
-import { getCity, City } from '../../utils/getCity';
+import { getCity, City } from '../../api/getCity';
 import { useNavigate } from 'react-router-dom';
-
 import { useSearchContext } from '../../hooks/useSearchContext ';
-
 
 function SearchTickets() {
   const navigate = useNavigate();
@@ -56,18 +54,6 @@ function SearchTickets() {
 
       try {
         const query = new URLSearchParams(requestData);
-        const response = await fetch(`https://students.netoservices.ru/fe-diplom/routes?${query.toString()}`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
-
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        console.log('routes', data);
 
         navigate(`/order?${query.toString()}`);
       } catch (error) {

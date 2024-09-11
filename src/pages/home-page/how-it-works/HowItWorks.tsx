@@ -1,4 +1,4 @@
-import '../home-page/home-page-style.css'
+import './style.css'
 import 'primereact/resources/themes/lara-light-indigo/theme.css';
 import 'primereact/resources/primereact.min.css';
 import { Button } from 'primereact/button';

@@ -1,0 +1,61 @@
+.type-of-coach-container{ 
+    margin-top: 25px;
+}
+
+.header-type-of-coach {
+    font-family: Roboto;
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35.16px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.p-tabview-nav {
+    gap: 17%;
+    padding: 20px 50px;
+}
+
+.tab-header {
+    display: flex;
+    flex-direction: column;
+
+}
+.custom-icon {
+    width: 50px;
+}
+
+.sedentary {
+    width: 32px;
+}
+
+.sedentary, .reserved {
+    margin-left: 15px;
+}
+.tab-label {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.p-tabview-nav li.p-highlight {
+    background-color: #FFA800;
+    ; /* Цвет фона активного таба */
+}
+
+.p-tabview-nav li.p-highlight .custom-icon {
+    filter: brightness(0) saturate(100%) invert(75%) sepia(66%) saturate(3484%) hue-rotate(356deg) brightness(101%) contrast(102%);
+    /* Применяем фильтр, чтобы изменить цвет иконки на оранжевый */
+}
+
+.p-tabview-nav li.p-highlight .tab-label {
+    color: #FFA800;
+    ; /* Цвет текста выбранного таба */
+}
+
+.p-tabview-nav li {
+    border-bottom: none; /* Убираем нижнюю границу */
+}
+
+.p-tabview-nav-link {
+    border-bottom: none; /* Убираем нижнюю границу у каждого таба */
+}

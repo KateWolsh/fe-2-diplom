@@ -1,0 +1,33 @@
+.about-us {
+    margin-top: 144px;
+    margin-bottom: 91px;
+    padding-right: 314px;
+    padding-left: 286px;
+  }
+  
+  .header-about-us {
+    font-size: 32px;
+    font-weight: bold;
+    text-align: left;
+  }
+  
+  .content-container {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 30px;
+  }
+  
+  .vertical-line {
+    width: 9px;
+    min-height: 231px;
+    background-color: #FFA800;
+    margin-right: 20px;
+    align-self: stretch;
+  }
+  
+  .content-about-us {
+    font-size: 24px;
+    line-height: 1.5;
+    flex: 1;
+    margin: 0;
+  }

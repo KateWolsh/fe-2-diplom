@@ -1,5 +1,5 @@
 
-import '../home-page/home-page-style.css'
+import './style.css'
 
 function AboutUs() {
 

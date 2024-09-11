@@ -1,114 +1,70 @@
 import 'primeicons/primeicons.css';
 import { FloatLabel } from 'primereact/floatlabel';
 import { Calendar } from 'primereact/calendar';
-import { useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 import FiltersPanel from '../filter-pannel/FilterPanel'
 import { RangeSlider } from '../../components/slider/Slider'
 import { Button } from 'primereact/button';
 import './style.css'
 import { useSearchContext } from '../../hooks/useSearchContext ';
 
+const initialPrice: [number, number] = [1900, 10000];
 
 function SearchTicketsWithFilters() {
   const { fromDate, toDate, setFromDate, setToDate } = useSearchContext();
-  // const {
-  //   priceFrom, priceTo, startDepartureHourFrom, startDepartureHourTo,
-  //   startArrivalHourFrom, startArrivalHourTo, endDepartureHourFrom, endDepartureHourTo,
-  //   endArrivalHourFrom, endArrivalHourTo
-  // } = useSearchContext();
-  const { setPriceFrom, setPriceTo, setStartDepartureHourFrom, setStartDepartureHourTo, setStartArrivalHourFrom, setStartArrivalHourTo, setEndDepartureHourFrom,
-    setEndDepartureHourTo, setEndArrivalHourFrom, setEndArrivalHourTo} = useSearchContext();
+
+  const { setPriceFrom, setPriceTo, setDeparture, setArrival } = useSearchContext();
 
   const [isExpandedTo, setIsExpandedTo] = useState(false);
   const [isExpandedFrom, setIsExpandedFrom] = useState(false);
 
-  const handlePriceSubmit = (range: [number, number]) => {
+
+  const handlePriceSubmit = useCallback((range: [number, number]) => {
     setPriceFrom(range[0]);
     setPriceTo(range[1]);
-};
+}, [])
 
-const handleTimeSubmit = (range: [number, number], id: string, header: string) => {
-    if (id === "outbound") {
-        if (header === "Время отбытия") {
-            setStartDepartureHourFrom(range[0]);
-            setStartDepartureHourTo(range[1]);
-        } else if (header === "Время прибытия") {
-            setStartArrivalHourFrom(range[0]);
-            setStartArrivalHourTo(range[1]);
-        }
-    } else if (id === "back") {
-        if (header === "Время отбытия") {
-            setEndDepartureHourFrom(range[0]);
-            setEndDepartureHourTo(range[1]);
-        } else if (header === "Время прибытия") {
-            setEndArrivalHourFrom(range[0]);
-            setEndArrivalHourTo(range[1]);
-        }
+const handleOutboundDeparture = useCallback((range: [number, number]) => handleTimeSubmit(range, "outbound_departure"), []);
+const handleOutboundArrival = useCallback((range: [number, number]) => handleTimeSubmit(range, "outbound_arrival"), []);
+const handleInboundDeparture = useCallback((range: [number, number]) => handleTimeSubmit(range, "inbound_departure"), []);
+const handleInboundArrival = useCallback((range: [number, number]) => handleTimeSubmit(range, "inbound_arrival"), []);
+
+const handleTimeSubmit = useCallback((range: [number, number], id: string) => {
+      if(id === "outbound_departure") {
+        setDeparture((prev) => ({
+            ...prev,
+            startDepartureHourFrom: range[0],
+            startDepartureHourTo: range[1],
+          }));
+      }
+      if (id === "outbound_arrival") {
+          setDeparture((prev) => ({
+              ...prev,
+              endDepartureHourFrom: range[0],
+              endDepartureHourTo: range[1],
+            }));
+      }
+    if (id === "inbound_departure") {
+        setArrival((prev) => ({
+            ...prev,
+            startArrivalHourFrom: range[0],
+            startArrivalHourTo: range[1],
+          }));
     }
-};
-  
-  // useEffect(() => {
-  //   const buildParams = () => {
-  //     return {
-  //       fromDate: fromDate,
-  //       toDate: toDate,
-  //       price_from: priceFrom,
-  //       price_to: priceTo,
-  //       start_departure_hour_from: startDepartureHourFrom,
-  //       start_departure_hour_to: startDepartureHourTo,
-  //       start_arrival_hour_from: startArrivalHourFrom,
-  //       start_arrival_hour_to: startArrivalHourTo,
-  //       end_departure_hour_from: endDepartureHourFrom,
-  //       end_departure_hour_to: endDepartureHourTo,
-  //       end_arrival_hour_from: endArrivalHourFrom,
-  //       end_arrival_hour_to: endArrivalHourTo,
-  //       ...filters
-  //     };
-  //   };
-  
-  //   const fetchFilteredTickets = async () => {
-  //     const params = buildParams();
-  //     console.log("Выполнение запроса с параметрами:", params);
-  //     const queryString = new URLSearchParams(params as any).toString();
-  //     const url = `https://students.netoservices.ru/fe-diplom/routes?${queryString}`;
-  
-  //     try {
-  //       const response = await fetch(url);
-  //       if (!response.ok) {
-  //         throw new Error(`Ошибка ${response.status}`);
-  //       }
-  //     const data = await response.json();
-  //     console.log("Полученные данные:", data);
-  //     // Здесь можно обновить состояние с данными
-  //     } catch (error) {
-  //       console.error("Ошибка при запросе:", error);
-  //     }
-  //   };
-  
-  //   fetchFilteredTickets();
-  // }, [
-  //   priceFrom,
-  //   priceTo,
-  //   startDepartureHourFrom,
-  //   startDepartureHourTo,
-  //   startArrivalHourFrom,
-  //   startArrivalHourTo,
-  //   endDepartureHourFrom,
-  //   endDepartureHourTo,
-  //   endArrivalHourFrom,
-  //   endArrivalHourTo,
-  //   filters,
-  //   fromDate, 
-  //   toDate
-  // ]);
-  
+    if (id === "inbound_arrival") {
+        setArrival((prev) => ({
+            ...prev,
+            endArrivalHourFrom: range[0],
+            endArrivalHourTo: range[1],
+        }));
+    }
+}, []);
   const toggleExpansionTo = () => {
     setIsExpandedTo(!isExpandedTo);
   };
   const toggleExpansionFrom = () => {
     setIsExpandedFrom(!isExpandedFrom);
   };
-
 
   return (
     <div className="search-form-filters">
@@ -147,7 +103,7 @@ const handleTimeSubmit = (range: [number, number], id: string, header: string) =
         maxLabel="До"
         minValue={1000}
         maxValue={10000}
-        initialRange={[1900, 10000]}
+        initialRange={initialPrice}
         onSubmit={handlePriceSubmit}
         type="price"
       />
@@ -171,19 +127,19 @@ const handleTimeSubmit = (range: [number, number], id: string, header: string) =
             header="Время отбытия"
             minValue={0}
             maxValue={1440}
-            initialRange={[100, 500]}
-            onSubmit={(range) => handleTimeSubmit(range, "outbound", "Время отбытия")}
+            initialRange={[100, 1440]}
+            onSubmit={handleOutboundDeparture}
             type="time"
-            id="outbound"
+            id="outbound_departure"
           />
           <RangeSlider
             header="Время прибытия"
             minValue={0}
             maxValue={1440}
-            initialRange={[100, 500]}
-            onSubmit={(range) => handleTimeSubmit(range, "outbound", "Время прибытия")}
+            initialRange={[100, 1440]}
+            onSubmit={handleOutboundArrival}
             type="time"
-            id="outbound"
+            id="outbound_arrival"
           />
         </div>
       </div>
@@ -207,21 +163,20 @@ const handleTimeSubmit = (range: [number, number], id: string, header: string) =
             header="Время отбытия"
             minValue={0}
             maxValue={1440}
-            initialRange={[600, 900]}
-            onSubmit={(range) => handleTimeSubmit(range, "back", "Время отбытия")}
+            initialRange={[100, 1440]}
+            onSubmit={handleInboundDeparture}
             type="time"
-            id="back"
+            id="inbound_departure"
 
           />
           <RangeSlider
             header="Время прибытия"
             minValue={0}
             maxValue={1440}
-            initialRange={[600, 900]}
-            onSubmit={(range) => handleTimeSubmit(range, "back", "Время прибытия")}
+            initialRange={[100, 1440]}
+            onSubmit={handleInboundArrival}
             type="time"
-            id="back"
-
+            id="inbound_arrival"
           />
         </div>
       </div>

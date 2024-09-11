@@ -8,19 +8,20 @@
     height: 354px;
     border: 1px solid #C4C4C4;
     background: #FFFFFF;
+    margin-bottom: 20px;
 }
 
-.info-train-container {
+.info-train-departure, .info-train-arrival {
     width: 197px;
-    height: 354px;
+    height: 175px;
     background: #E4E0E9;
     display: flex;
     flex-direction: column;
-
 }
 
 .train-icon {
-    margin-top: 58px;
+    width: 70px;
+    margin-top: 38px;
     margin-left: 53px;
 }
 
@@ -31,22 +32,17 @@
     text-align: center;
     margin-top: 17px;
     color: #3E3C41;
-} */
+}
 
+.departure, .arrival {
+    display: flex;
+    margin-top: 30px;
+}
 .info-directions-container {
     display: flex;
     flex-direction: column;
-}
-
-.there-direction,
-.from-there-direction {
-    display: flex;
-    margin-top: 54px;
-    margin-left: 39px;
-}
-
-.there-direction {
-    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-top: 30px;
 }
 
 .info-direction-arrival,
@@ -55,6 +51,7 @@
     flex-direction: column;
     margin-right: 30px;
     margin-left: 30px;
+
 }
 
 .info-time-from,
@@ -90,12 +87,32 @@
     border-radius: 0.5px;
     margin: 0 20px;
 }
-
+.info-seats-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
 .item-info-seats {
+    display: flex;
+    gap: 15px;
     margin-top: 37px;
+    margin-left: 30px;
 }
 
-/* Стили для тултипа */
+.ticket-price {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.btn-choose-seats {
+    position: relative;
+    top: 100px;
+    right: -75px;
+    width: 228px;
+    height: 39px;
+    background-color: #FFA800;
+} 
+
 .tooltip-count-seats {
     width: 276px;
     height: 101px;

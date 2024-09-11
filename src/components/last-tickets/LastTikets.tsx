@@ -39,7 +39,7 @@ export const LastTickets = () => {
     const renderTicket = (ticket: Departure) => {
         const { from, to, min_price } = ticket;
         return (
-            <div className="p-col-4 p-md-4 cards-last-tikets-container">
+            <div className=" cards-last-tikets-container">
                 <Card className="ticket-card">
                     <div className="last-ticket-grid">
                         <div className="last-ticket-from-container">
@@ -64,9 +64,13 @@ export const LastTickets = () => {
         );
     };
     return (
-        <div className="p-grid">
-            <DataView value={tickets} itemTemplate={renderTicket} layout="grid" />
+        <div className="tikets-container">
+            <span className="header-last-tickets">ПОСЛЕДНИЕ БИЛЕТЫ</span>
+            <div className="p-grid">
+                <DataView value={tickets} itemTemplate={renderTicket} layout="grid" />
+            </div>
         </div>
+        
     );
 };
 

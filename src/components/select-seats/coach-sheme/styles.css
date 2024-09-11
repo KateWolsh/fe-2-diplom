@@ -1,0 +1,32 @@
+.scheme-container {
+  /*background-image: url('../src/img/coach-scheme.svg');*/
+  position: relative;
+  width: 800px;
+  height: 100px;
+}
+
+.scheme-img {
+  width: 900px;
+}
+
+.seat-slot {
+  position: absolute;
+  background-color: gray;
+  color: white;
+  font-size: 11px;
+  text-align: center;
+}
+
+.seat-slot.available {
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
+}
+
+.seat-slot.selected {
+  border: 1px solid orange;
+}
+
+.seat-slot.first {
+  line-height: 55px;
+}

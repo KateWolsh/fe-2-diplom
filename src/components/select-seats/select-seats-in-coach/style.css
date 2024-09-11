@@ -1,0 +1,104 @@
+.coaches-info {
+    display: flex;
+    width: 958px;
+    height: 37px;
+    background: #FFA80070;
+    padding: 7px;
+    gap: 15px;
+}
+
+.avalable-coaches {
+    font-family: Roboto;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.13px;
+    text-align: left;
+}
+
+.info-avalable-couches {
+    margin-left: 340px;
+}
+
+.detailed-information {
+    display: flex;
+    margin-bottom: 50px;
+}
+
+.number-coach-container {
+    width: 190px;
+    height: 161px;
+    background: #FFD98F;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;
+}
+
+.number-coach {
+    margin-top: 25px;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.coach-name {
+    cursor: pointer;
+}
+
+.selected-coach-name {
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 28.13px;
+    color: white;
+}
+
+.grid-table {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+    max-width: 416px;
+    margin-top: 7px;
+    margin-left: 85px;
+}
+
+.grid-header {
+    font-weight: bold;
+    padding: 10px;
+    color: #C4C4C4;
+
+}
+
+.grid-item {
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.13px;
+}
+
+.price-ticket {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 28.13px;
+    position: relative;
+    left: 246px;
+    bottom: 32px;
+}
+
+.info-about-service-container {
+    margin-top: 17px;
+    margin-left: 80px;
+}
+
+.header-about-service {
+    color: #928F94;
+}
+
+.service-icon-container {
+    display: flex;
+    gap: 10%;
+    margin-top: 25px;
+}
+
+.choose-seats-container {
+    margin-left: 25px;
+}

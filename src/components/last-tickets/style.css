@@ -2,6 +2,13 @@
     font-family: Roboto;
 }
 
+.header-last-tickets {
+    font-size: 30px;
+    font-weight: 500;
+    line-height: 35.16px;
+    margin-bottom: 26px;
+}
+
 .cards-last-tikets-container {
     width: 360px;
     height: 161px;
@@ -42,4 +49,10 @@
 
 .last-ticket-station {
     color: black;
+}
+
+.tikets-container {
+    position: relative;
+    top: -30px;
+    left: 50px;
 }

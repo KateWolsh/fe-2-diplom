@@ -4,7 +4,7 @@
 
 .select-seats-container {
     width: 959px;
-    height: 1774px;
+    height: 1240px;
     border: 1px solid #C4C4C4;
 }
 
@@ -17,11 +17,46 @@
     font-size: 24px;
 }
 
-.icon-train
 .about-train {
-    width: 957px;
+    display: flex;
+    background-color: #F7F6F6;
+    width: 954px;
     height: 123px;
     background-color: "#F7F6F6";
+    gap: 15%;
+    padding: 17px 35px 17px 35px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+}
+
+.number-express-train {
+    display: flex;
+    flex-direction: column;
+}
+
+.icon-train {
+    width: 50px;
+    height: 50px;
+}
+
+.number-train {
+    margin-top: 15px;
+    margin-left: -18px;
+}
+
+.about-direct {
+    display: flex;
+}
+
+.direction-arrival {
+    margin-right: 50px;
+}
+
+.arrow {
+    margin-top: 20px;
+    margin-right: 45px;
+    width: 30px;
+    height: 20px;
 }
 
 .time-from,
@@ -46,9 +81,72 @@
     color: #928F94;
 }
 
+.about-time {
+    display: flex;
+}
+
 .hour,
 .minutes {
     font-size: 18px;
     font-weight: 400;
     text-align: left;
+    margin-left: 10px;
+}
+
+.inputs-count-container {
+    display: flex;
+    margin-top: 25px;
+}
+.header-count-tickets {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35.16px;
+    text-align: left;
+    margin-left: 18px;
+}
+
+.adults-count, .kids-count, .babies-count {
+    width: 317px;
+    height: 192px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 36px 36px;
+}
+
+.input-count-seats {
+    width: 240px;
+    height: 50px;
+    margin-bottom: 23px;
+}
+
+/*для поля если данные введены */
+
+.adults-count {
+    box-shadow: 0px 2px 2px 0px #00000040;
+    background: #F7F6F6;
+}
+
+/*для поля в которое вводятся данные */
+
+.kids-count {
+    border: 1px solid #FFA800C9
+}
+
+.input-count-container {
+    position: relative;
+    display: inline-block;
+}
+
+.header-in-input {
+    position: absolute;
+    top: 38%;
+    left: 10px;
+    transform: translateY(-50%);
+    pointer-events: none; /* Текст не интерактивен */
+    color: #999; /* Цвет для фиксированного текста */
+}
+
+.input-count-container input {
+    padding-left: 96px; 
+    padding-bottom: 3px;/* Добавляем отступ внутри импута */
 }

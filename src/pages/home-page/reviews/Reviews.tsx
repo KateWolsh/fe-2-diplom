@@ -1,41 +1,8 @@
-import '../home-page/home-page-style.css';
+import './style.css';
 import { Galleria } from 'primereact/galleria';
-import girl from '../../img/girl.png'
-import men from '../../img/men.png'
 import { useState } from 'react';
-
-interface Review {
-    id: number;
-    text: string;
-    author: string;
-    image: string;
-}
-const reviews: Review[] = [
-    {
-        id: 1,
-        text: " “Доброжелательные подсказки на всех этапах помогут правильно заполнить поля и без затруднений купить авиа или ж/д билет, даже если вы заказываете онлайн билет впервые.”",
-        author: "Екатерина Вальнова",
-        image: girl
-    },
-    {
-        id: 2,
-        text: "СМС-сопровождение до посадки. Сразу после оплаты ж/д билетов и за 3 часа до отправления мы пришлем вам СМС-напоминание о поездк.",
-        author: "Евгений Стрыкало",
-        image: men
-    },
-    {
-        id: 3,
-        text: " Доброжелательные подсказки на всех этапах помогут правильно заполнить поля и без затруднений купить авиа или ж/д билет, даже если вы заказываете онлайн билет впервые.",
-        author: "Лариса Вальнова",
-        image: girl
-    },
-    {
-        id: 4,
-        text: "СМС-сопровождение до посадки. Сразу после оплаты ж/д билетов и за 3 часа до отправления мы пришлем вам СМС-напоминание о поездк.",
-        author: "Евгений Приходько",
-        image: men
-    }
-];
+import { reviews } from './data'
+import { Review } from './data'
 
 const Reviews = () => {
     const [activeIndex, setActiveIndex] = useState(0);

@@ -94,3 +94,31 @@
 .order-page .btn-main {
   right:60px;
 }
+
+.content-order-container {
+  display: flex;
+  padding: 95px 256px 0 256px;
+}
+
+.section-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-order {
+  margin-left: 83px;
+}
+
+.select-seats-common-container .btn-main {
+  position: relative;
+  color: #F7F6F6;
+  display: flex;
+  top: -12px;
+  left: 639px;
+}
+
+.select-seats-common-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}

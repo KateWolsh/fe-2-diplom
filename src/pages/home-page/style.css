@@ -1,0 +1,32 @@
+* {
+  font-family: Roboto, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.header-container {
+  position: relative;
+  height: 985px;
+  overflow: hidden;
+}
+
+.main-banner {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.navbar,
+.search-form {
+  position: relative;
+  z-index: 1;
+}
+
+.yellow-strip {
+  height: 8px;
+  background-color: #FFA800;
+  width: 100%;
+  position: relative;
+}

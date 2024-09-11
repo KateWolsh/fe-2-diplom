@@ -5,12 +5,12 @@
 
 .search-form-filters {
     width: 364px;
-    height: 1012px;
     display: flex;
     flex-direction: column;
     background-color: #3E3C41;
+    padding-bottom: 20px;
     margin-left: 40px;
-    margin-bottom: 500px;
+    margin-bottom: 100px;
 }
 
 .inputs-date-filters {

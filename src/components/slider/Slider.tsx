@@ -24,8 +24,7 @@ const convertMinutesToTime = (minutes: number) => {
 
 export const RangeSlider: React.FC<RangeSliderProps> = ({ type, header, minLabel, maxLabel, minValue, maxValue, initialRange, step = 1, onSubmit, id }) => {
     const [rangeValues, setRangeValues] = useState<[number, number]>(initialRange);
-    const { setPriceFrom, setPriceTo, setStartDepartureHourFrom, setStartDepartureHourTo, setStartArrivalHourFrom, setStartArrivalHourTo, setEndDepartureHourFrom,
-        setEndDepartureHourTo, setEndArrivalHourFrom, setEndArrivalHourTo} = useSearchContext();
+    const { setPriceFrom, setPriceTo, setDeparture, setArrival} = useSearchContext();
     const [debouncedRange, setDebouncedRange] = useState<[number, number]>(initialRange);
 
     useEffect(() => {
@@ -35,23 +34,36 @@ export const RangeSlider: React.FC<RangeSliderProps> = ({ type, header, minLabel
             setPriceFrom(rangeValues[0]);
             setPriceTo(rangeValues[1]);
         } else if (type === 'time' && id) {
-            const [departureSetterFrom, departureSetterTo, arrivalSetterFrom, arrivalSetterTo] = [
-                id === 'outbound' && header === 'Время отбытия' ? setStartDepartureHourFrom : undefined,
-                id === 'outbound' && header === 'Время отбытия' ? setStartDepartureHourTo : undefined,
-                id === 'outbound' && header === 'Время прибытия' ? setStartArrivalHourFrom : undefined,
-                id === 'outbound' && header === 'Время прибытия' ? setStartArrivalHourTo : undefined,
-                id === 'back' && header === 'Время отбытия' ? setEndDepartureHourFrom : undefined,
-                id === 'back' && header === 'Время отбытия' ? setEndDepartureHourTo : undefined,
-                id === 'back' && header === 'Время прибытия' ? setEndArrivalHourFrom : undefined,
-                id === 'back' && header === 'Время прибытия' ? setEndArrivalHourTo : undefined,
-            ];
-
-            departureSetterFrom && departureSetterFrom(rangeValues[0]);
-            departureSetterTo && departureSetterTo(rangeValues[1]);
-            arrivalSetterFrom && arrivalSetterFrom(rangeValues[0]);
-            arrivalSetterTo && arrivalSetterTo(rangeValues[1]);
+            if(id === "outbound_departure") {
+                setDeparture((prev) => ({
+                    ...prev,
+                    startDepartureHourFrom: rangeValues[0],
+                    startDepartureHourTo: rangeValues[1],
+                  }));
+            }
+            if (id === "outbound_arrival") {
+                setDeparture((prev) => ({
+                    ...prev,
+                    endDepartureHourFrom: rangeValues[0],
+                    endDepartureHourTo: rangeValues[1],
+                  }));
+            }
+            if (id === "inbound_departure") {
+                setArrival((prev) => ({
+                    ...prev,
+                    startArrivalHourFrom: rangeValues[0],
+                    startArrivalHourTo: rangeValues[1],
+                  }));
+            }
+            if (id === "inbound_arrival") {
+                setArrival((prev) => ({
+                    ...prev,
+                    endArrivalHourFrom: rangeValues[0],
+                    endArrivalHourTo: rangeValues[1],
+                }));
+            }
         }
-    }, [rangeValues, onSubmit, type, id, header]);
+    }, [rangeValues, type, id]);
 
     const handleRangeChange = (e: SliderChangeEvent) => {
         const newValue = e.value as [number, number];
