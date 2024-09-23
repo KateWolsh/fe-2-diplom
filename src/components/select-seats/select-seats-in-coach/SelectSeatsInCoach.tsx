@@ -3,6 +3,8 @@ import { CoachScheme } from '../coach-sheme/CoachScheme'
 import './style.css'
 import { ICoachInfo } from '../../../types';
 import { useEffect, useState } from 'react';
+import { useCoachContext } from '../../../hooks/useCoachContext';
+import { useDirectionContext } from '../../../hooks/useDirectionContext';
 
 interface SelectSeatsInCoachProps {
     type: CoachClass;
@@ -14,6 +16,7 @@ export const SelectSeatsInCoach = ({ type, coaches, onCoachSelection }: SelectSe
 
     const filterCoaches = coaches.filter((coach) => coach.coach.class_type === type)
     const [selectedCoach, setSelectedCoach] = useState<ICoachInfo | null>(null)
+    const { isDeparture, isArrival } = useDirectionContext()
 
     useEffect(() => {
         console.log('Filter coaches on type change:', filterCoaches);
@@ -21,11 +24,20 @@ export const SelectSeatsInCoach = ({ type, coaches, onCoachSelection }: SelectSe
         console.log('Смена типа')
     },[type])
 
+    const { setDepartureCoachId, setArrivalCoachId } = useCoachContext();
+
     const onClick = (coach: ICoachInfo) => {
         console.log('Coach clicked:', coach);
         setSelectedCoach(coach);
-        onCoachSelection(coach)
-    }
+
+        if (isDeparture) {
+            setDepartureCoachId(coach.coach._id);
+        } else if (isArrival) {
+            setArrivalCoachId(coach.coach._id);
+        }
+    
+        onCoachSelection(coach);
+    };
 
     return selectedCoach && (
         <div className="select-seats-in-coach-container">
@@ -60,12 +72,17 @@ export const SelectSeatsInCoach = ({ type, coaches, onCoachSelection }: SelectSe
                                     <span>Верхние</span>
                                     <span className="top-seats-count"></span>
                                 </div>
-                                <div className="grid-item price">{selectedCoach.coach.side_price} ₽</div>
+                                <div className="grid-item price">{selectedCoach.coach.top_price} ₽</div>
                                 <div className="grid-item">
                                     <span>Нижние</span>
                                     <span className="bottom-seats-count"></span>
                                 </div>
-                                 <div className="grid-item price">{selectedCoach.coach.top_price} ₽</div>
+                                 <div className="grid-item price">{selectedCoach.coach.bottom_price} ₽</div>
+                                 <div className="grid-item top-seats">
+                                    <span>Боковые</span>
+                                    <span className="top-seats-count"></span>
+                                </div>
+                                <div className="grid-item price">{selectedCoach.coach.side_price} ₽</div>
                              </>
 
                            ) : (
@@ -83,7 +100,7 @@ export const SelectSeatsInCoach = ({ type, coaches, onCoachSelection }: SelectSe
                         </div>
                 </div>
                 <div className="choose-seats-container">
-                        <CoachScheme type={type} seats={selectedCoach.seats} selectionSeatNumber={selectedCoach.seats.length}/>
+                        <CoachScheme type={type} seats={selectedCoach.seats} selectionSeatNumber={selectedCoach.seats.length} />
                     </div>
             </div>
 

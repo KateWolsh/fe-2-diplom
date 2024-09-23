@@ -1,0 +1,42 @@
+.error-modal {
+    display: flex;
+    flex-direction: column;
+    width: 666.31px;
+    height: 505px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px 0px #00000040;
+    align-items: center; /* центрирует по вертикали */
+}
+
+.top {
+    width: 664.92px;
+    height: 107px;
+    background: #FF3D0061;
+    padding: 41px 38px;
+}
+
+.messege-container {
+    height: 291px;
+    padding: 46px 24px;
+}
+
+.error-modal-decore-line {
+    width: 666.31px;
+    border: 1px solid #928F94
+}
+
+.important-messege {
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28.13px;
+    color: #000000;
+}
+
+.error-modal .primary {
+    width: 233px;
+    height: 52px;
+    border: 1px solid #292929;
+    color: #000000;
+    margin-top: 25px;
+}

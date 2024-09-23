@@ -6,7 +6,6 @@ import { Review } from './data'
 
 const Reviews = () => {
     const [activeIndex, setActiveIndex] = useState(0);
-    // Function to create a slide with two reviews
     const itemTemplate = (review: Review) => {
         return (
             <div className="review-slide">
@@ -19,13 +18,11 @@ const Reviews = () => {
         );
     };
 
-    // Group reviews into pairs for display
     const groupedReviews = [];
     for (let i = 0; i < reviews.length; i += 2) {
         groupedReviews.push(reviews.slice(i, i + 2));
     }
 
-    // Custom indicator function
     const indicator = (index: number, isActive: boolean) => {
         return (
             <span

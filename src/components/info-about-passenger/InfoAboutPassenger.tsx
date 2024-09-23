@@ -1,5 +1,5 @@
 import { Button } from "primereact/button"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import 'primeicons/primeicons.css';
 import { Panel } from "primereact/panel";
 import { InputText } from "primereact/inputtext";
@@ -7,8 +7,16 @@ import { Calendar } from "primereact/calendar";
 import { Dropdown } from "primereact/dropdown";
 import { Checkbox } from 'primereact/checkbox';
 import './style.css'
+import { useOrderContext } from "../../hooks/useOrderContext";
 
-function InfoAboutPassenger() {
+interface InfoAboutPassengerProps {
+    passengerIndex: number;
+    onValidationChange: (index: number, isValid: boolean) => void;
+}
+
+function InfoAboutPassenger({ passengerIndex, onValidationChange  }: InfoAboutPassengerProps) {
+    const { passengerInfo, setPassengerInfo } = useOrderContext();
+
     const [expanded, setExpanded] = useState(false);
     const [selectedGenderType, setSelectedgenderType] = useState('adult');
     const [selectedDocumentTypes, setSelectedDocumentTypes] = useState('passport')
@@ -17,13 +25,20 @@ function InfoAboutPassenger() {
     const [documentNumber, setDocumentNumber] = useState('');
     const [documentSeries, setDocumentSeries] = useState('');
 
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [middleName, setMiddleName] = useState('');
+    const [birthday, setBirthday] = useState<Date | null>(null);
+
+    const [valid, setValid] = useState(false);
+
     const toggleExpansion = () => {
         setExpanded(!expanded);
     };
 
     const documentTypes = [
-        { label: 'Паспорт', value: 'passport' },
-        { label: 'Свидетельство о рождении', value: 'birth_certificate' }
+        { label: 'Паспорт', value: 'паспорт' },
+        { label: 'Свидетельство о рождении', value: 'свидетельство о рождении' }
     ];
     const genderType = [
         { label: 'Взрослый', value: 'adult' },
@@ -38,6 +53,37 @@ function InfoAboutPassenger() {
         setIsCheckedMobility(e.checked);
     };
 
+    useEffect(() => {
+        // Validate form fields
+        const isValid = firstName !== '' && lastName !== '' && middleName !== '' &&
+                        selectedGender !== null &&
+                        birthday !== null &&
+                        documentNumber !== '';
+        setValid(isValid);
+        onValidationChange(passengerIndex, isValid);
+    }, [firstName, lastName, middleName, selectedGender, birthday, documentNumber]);
+
+    const handleSavePassengerInfo = () => {
+        if (valid) {
+            setPassengerInfo(`${passengerIndex}`, {
+                is_adult: selectedGenderType === 'adult',
+                first_name: firstName,
+                last_name: lastName,
+                patronymic: middleName,
+                gender: selectedGender === ('male' || 'female'),
+                birthday: birthday ? birthday.toISOString().split('T')[0] : '',
+                document_type: selectedDocumentTypes,
+                document_data: documentSeries ? `${documentSeries}-${documentNumber}` : documentNumber
+            });
+            console.log('passengerInfo', passengerInfo)
+
+        }
+    };
+
+    useEffect(() => {
+        console.log('Updated passengerInfo:', passengerInfo);
+    }, [passengerInfo]);
+    
     // Функция для генерации маски черточек
     const getMask = (length) => Array(length).fill('-').join('');
 
@@ -70,17 +116,17 @@ function InfoAboutPassenger() {
                     <div className="p-field all-name-container">
                         <div className="p-field">
                             <label htmlFor="lastName" style={{ fontSize: "16px", color: "#928F94" }}>Фамилия</label>
-                            <InputText className="name" id="lastName" placeholder="Фамилия" style={{ fontSize: "24px", color: "#292929" }} />
+                            <InputText className="name" id="lastName" placeholder="Фамилия" style={{ fontSize: "24px", color: "#292929" }} value={lastName} onChange={(e) => setLastName(e.target.value)} />
                         </div>
 
                         <div className="p-field" style={{ marginLeft: "25px" }}>
                             <label htmlFor="firstName" style={{ fontSize: "16px", color: "#928F94" }}>Имя</label>
-                            <InputText className="name" id="firstName" placeholder="Имя" style={{ fontSize: "24px", color: "#292929" }} />
+                            <InputText className="name" id="firstName" placeholder="Имя" style={{ fontSize: "24px", color: "#292929" }} value={firstName} onChange={(e) => setFirstName(e.target.value)} />
                         </div>
 
                         <div className="p-field" style={{ marginLeft: "25px" }}>
                             <label htmlFor="middleName" style={{ fontSize: "16px", color: "#928F94" }}>Отчество</label>
-                            <InputText className="name" id="middleName" placeholder="Отчество" style={{ fontSize: "24px", color: "#292929" }} />
+                            <InputText className="name" id="middleName" placeholder="Отчество" style={{ fontSize: "24px", color: "#292929" }} value={middleName} onChange={(e) => setMiddleName(e.target.value)} />
                         </div>
                     </div>
                     <div className="gender-birthday-container">
@@ -103,7 +149,7 @@ function InfoAboutPassenger() {
                         </div>
                         <div style={{ marginLeft: "25px", marginTop: "5px" }} className="p-field birthday-container">
                             <label htmlFor="dob" style={{ fontSize: "16px", color: "#928F94" }}>Дата рождения</label>
-                            <Calendar className="birthday" id="dob" placeholder="Выберите дату рождения" />
+                            <Calendar className="birthday" id="dob" placeholder="Выберите дату рождения" value={birthday} onChange={(e) => setBirthday(e.value)} />
                         </div>
                     </div>
 
@@ -125,16 +171,20 @@ function InfoAboutPassenger() {
                                 onChange={(e) => setSelectedDocumentTypes(e.value)}
                             />
                         </div>
-                        {selectedDocumentTypes === 'passport' && (
+                        {selectedDocumentTypes === 'паспорт' && (
                             <>
                                 <div className="p-field" style={{ marginLeft: "25px" }}>
                                     <label htmlFor="documentSeries" style={{ fontSize: "16px", color: "#928F94" }}>Серия документа</label>
                                     <InputText
                                         className="document-series input-with-mask "
                                         id="documentSeries"
+                                        maxLength={4}
                                         placeholder={getMask(4)}
                                         value={documentSeries}
-                                        onChange={(e) => setDocumentSeries(e.target.value)}
+                                        onChange={(e) => {
+                                            const value = e.target.value.replace(/\D/g, '').slice(0, 4);
+                                            setDocumentSeries(value);
+                                        }}
                                     />
                                 </div>
                                 <div className="p-field" style={{ marginLeft: "25px" }}>
@@ -142,28 +192,35 @@ function InfoAboutPassenger() {
                                     <InputText
                                         className="document-number input-with-mask "
                                         id="documentNumber"
+                                        maxLength={6}
                                         placeholder={getMask(6)}
                                         value={documentNumber}
-                                        onChange={(e) => setDocumentNumber(e.target.value)}
+                                        onChange={(e) => {
+                                            const value = e.target.value.replace(/\D/g, '');
+                                            setDocumentNumber(value);
+                                        }}
                                     />
                                 </div>
                             </>
                         )}
-                        {selectedDocumentTypes === 'birth_certificate' && (
+                        {selectedDocumentTypes === 'свидетельство о рождении' && (
                             <div className="p-field" style={{ marginLeft: "25px" }}>
                                 <label htmlFor="documentNumber" style={{ fontSize: "16px", color: "#928F94" }}>Номер документа</label>
                                 <InputText
                                     className="document-number input-with-mask "
                                     id="documentNumber"
+                                    maxLength={12}
                                     placeholder={getMask(12)}
                                     value={documentNumber}
-                                    onChange={(e) => setDocumentNumber(e.target.value)}
-                                />
+                                    onChange={(e) => {
+                                        const value = e.target.value.replace(/\D/g, '').slice(0, 6);
+                                        setDocumentNumber(value);
+                                    }}                                />
                             </div>
                         )}
                     </div>
                     < div className="next-passenger-container">
-                        <Button style={{}} className='primary next-passenger' label='Следующий пассажир' />
+                        <Button className='primary next-passenger' label='Следующий пассажир' onClick={handleSavePassengerInfo} />
                     </div>
                 </Panel>
             )}

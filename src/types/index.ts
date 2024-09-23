@@ -93,7 +93,7 @@ export interface IItem {
 
 export interface ITicketsProps {
   items: IItem[];
-  onSelectSeatsClick: (ticket: IItem) => void; // Add this line
+  onSelectSeatsClick: (ticket: IItem) => void;
 }
 
 export interface ITicketProps {
@@ -145,6 +145,7 @@ export interface ICoachInfo {
 
 export interface ISelectedSeatsProps {
   direction: IDirection;
+  directionType: string;
 }
 
 export interface IDirection {

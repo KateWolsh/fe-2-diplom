@@ -10,7 +10,7 @@ import { useSearchContext } from '../../hooks/useSearchContext ';
 
 const initialPrice: [number, number] = [1900, 10000];
 
-function SearchTicketsWithFilters() {
+export const SearchTicketsWithFilters = () => {
   const { fromDate, toDate, setFromDate, setToDate } = useSearchContext();
 
   const { setPriceFrom, setPriceTo, setDeparture, setArrival } = useSearchContext();
@@ -183,5 +183,3 @@ const handleTimeSubmit = useCallback((range: [number, number], id: string) => {
     </div>
   )
 }
-
-export default SearchTicketsWithFilters

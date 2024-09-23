@@ -119,14 +119,10 @@
     margin-bottom: 23px;
 }
 
-/*для поля если данные введены */
-
 .adults-count {
     box-shadow: 0px 2px 2px 0px #00000040;
     background: #F7F6F6;
 }
-
-/*для поля в которое вводятся данные */
 
 .kids-count {
     border: 1px solid #FFA800C9
@@ -142,11 +138,11 @@
     top: 38%;
     left: 10px;
     transform: translateY(-50%);
-    pointer-events: none; /* Текст не интерактивен */
-    color: #999; /* Цвет для фиксированного текста */
+    pointer-events: none; 
+    color: #999; 
 }
 
 .input-count-container input {
     padding-left: 96px; 
-    padding-bottom: 3px;/* Добавляем отступ внутри импута */
+    padding-bottom: 3px;
 }

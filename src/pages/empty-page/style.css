@@ -1,0 +1,17 @@
+.orderConfirmation-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.thanks {
+    position: relative;
+    left: 210px;
+    opacity: 1000;
+    bottom: 300px;
+
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 84.38px;
+    text-align: left;
+    color: #FFFFFF;
+}

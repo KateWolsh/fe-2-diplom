@@ -133,13 +133,13 @@
 }
 
 .tooltip-count-seats .p-tooltip-arrow {
-    display: none; /* Скрыть стрелку тултипа */
+    display: none;
 }
 
 .tooltip-count-seats {
     position: absolute;
-    top: 1020px; /* Позиционирование по вертикали */
-    left: 1384px; /* Позиционирование по горизонтали */
+    top: 1020px;
+    left: 1384px;
     gap: 0px;
 }
 .p-tooltip {

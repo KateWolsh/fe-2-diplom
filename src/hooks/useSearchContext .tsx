@@ -25,14 +25,6 @@ export const SearchProvider: React.FC<{ children: ReactNode }> = ({ children }) 
     endArrivalHourFrom: 0,
     endArrivalHourTo: 1440,
   })
-  // const [startDepartureHourFrom, setStartDepartureHourFrom] = useState<number>(0);
-  // const [startDepartureHourTo, setStartDepartureHourTo] = useState<number>(1440);
-  // const [startArrivalHourFrom, setStartArrivalHourFrom] = useState<number>(0);
-  // const [startArrivalHourTo, setStartArrivalHourTo] = useState<number>(1440);
-  // const [endDepartureHourFrom, setEndDepartureHourFrom] = useState<number>(0);
-  // const [endDepartureHourTo, setEndDepartureHourTo] = useState<number>(1440);
-  // const [endArrivalHourFrom, setEndArrivalHourFrom] = useState<number>(0);
-  // const [endArrivalHourTo, setEndArrivalHourTo] = useState<number>(1440);
 
   const [filters, setFilters] = useState({
     have_second_class: false,

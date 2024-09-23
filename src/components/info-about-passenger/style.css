@@ -4,7 +4,6 @@
 
 .info-passanger-container {
     width: 960px;
-    height: 830px;
 }
 
 .info-passanger-container .header-info-passanger-container {
@@ -133,8 +132,8 @@
 
 .next-passenger-container {
     display: flex;
-    justify-content: flex-end; /* Выравнивание по правому краю */
-    margin-top: 45px; /* Отступ сверху между блоками */
+    justify-content: flex-end;
+    margin-top: 45px;
 }
 
 .next-passenger {

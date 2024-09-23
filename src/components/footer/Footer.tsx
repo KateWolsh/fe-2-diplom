@@ -3,6 +3,9 @@ import { Button } from 'primereact/button';
 import Subscription from "../subscription/Subscription"
 
 function Footer() {
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
     return (
         <div className="footer">
             <div className="contacts-container">
@@ -70,12 +73,14 @@ function Footer() {
                     </ul>
                 </div>
             </div>
+            <div className="decore-line"></div>
             <div className="under-footer">
                 <span className="logo-footer">ЛОГО</span>
                 <Button
                     icon="pi pi-chevron-up"
                     className="scroll-to-top-button"
                     tooltip="Наверх"
+                    onClick={scrollToTop}
                 />
                 <span className="year-footer">2018 WEB</span>
             </div>

@@ -2,7 +2,7 @@ import './style.css'
 import Navbar from "../../components/navbar/Navbar"
 import Footer from '../../components/footer/Footer'
 import SearchTickets from '../../components/search-tickets/SearchTickets'
-import SearchTicketsWithFilters from '../../components/search-tickets-with-fiters/SearchTicketsWithFilters'
+import { SearchTicketsWithFilters } from '../../components/search-tickets-with-fiters/SearchTicketsWithFilters'
 import { Tickets } from '../../components/ticket/Tickets'
 import { useSearchContext } from '../../hooks/useSearchContext ';
 import { useState, useEffect } from 'react'
@@ -11,19 +11,35 @@ import { LastTickets } from '../../components/last-tickets/LastTikets'
 import { SelectSeats } from '../../components/select-seats/SelectSeats'
 import { getTickets } from '../../api/getTickets'
 import { Button } from 'primereact/button'
+import { PassengerCards } from '../../components/passenger-cards/PassengerCards'
+import { TripDetails } from '../../components/trip-details/TripDetails'
+import { DirectionProvider } from '../../hooks/useDirectionContext'
+import { useOrderStepContext } from '../../hooks/useOrderStepContext'
 
 const OrderPage = () => {
+
   const { fromDate, toDate, filters, fromCity, toCity, priceFrom, priceTo, departure, arrival } = useSearchContext();
 
-  const [tickets, setTickets] = useState<IItem[]>([]); // Состояние для хранения данных билетов
-  // const [loading, setLoading] = useState<boolean>(true); // Состояние для индикатора загрузки
-  // const [error, setError] = useState<string | null>(null); // Состояние для хранения ошибок
+  const { currentStep, setCurrentStep } = useOrderStepContext();
+
+  const [tickets, setTickets] = useState<IItem[]>([]);
+  // const [loading, setLoading] = useState<boolean>(true);
+  // const [error, setError] = useState<string | null>(null);
   const [selectedTicket, setSelectedTicket] = useState<IItem | null>(null);
-  const [showSelectSeats, setShowSelectSeats] = useState<boolean>(false); // Состояние для отображения SelectSeats
+  const [showSelectSeats, setShowSelectSeats] = useState<boolean>(false);
+  const [showPassengerCards, setShowPassengerCards] = useState<boolean>(false);
+  const [showTripDetails, setShowTripDetails] = useState<boolean>(false);
 
   const handleSelectSeatsClick = (ticket: IItem) => {
     setSelectedTicket(ticket);
     setShowSelectSeats(true); 
+  };
+
+  const handleShowPassengerCards = () => {
+    setShowSelectSeats(false);
+    setShowPassengerCards(true);
+    setShowTripDetails(true);
+    setCurrentStep(2);
   };
 
   const buildParams = () => {
@@ -60,7 +76,7 @@ const OrderPage = () => {
       try {
         const fetchedTickets = await getTickets(params);
         console.log("Полученные данные:", fetchedTickets);
-        setTickets(fetchedTickets); // Обновляем состояние с полученными данными
+        setTickets(fetchedTickets);
       } catch (error) {
         console.error("Ошибка при запросе:", error);
         // setError('Ошибка при загрузке билетов. Попробуйте позже.');
@@ -86,7 +102,7 @@ const OrderPage = () => {
     departure?.startDepartureHourFrom,
     departure?.startDepartureHourTo,
     departure?.endDepartureHourFrom,
-    departure?.endDepartureHourTo,
+    departure?.endDepartureHourTo, 
     arrival?.startArrivalHourFrom,
     arrival?.startArrivalHourTo,
     arrival?.endArrivalHourFrom,
@@ -101,25 +117,46 @@ const OrderPage = () => {
         <SearchTickets />
       </div>
       <div className="step-container">
-        <button className="step">① Билеты</button>
-        <button className="step">② Пассажиры</button>
-        <button className="step">③ Оплата</button>
-        <button className="step">④ Проверка</button>
+        <button className={`step ${currentStep >= 1 ? 'active' : ''}`}>
+          <span className="step-img" >①</span>
+          <span className="step-name">Билеты</span>
+         </button>
+        <button className={`step ${currentStep >= 2 ? 'active' : ''}`}>
+          <span className="step-img">②</span>
+          <span className="step-name">Пассажиры</span>
+        </button>
+        <button className={`step ${currentStep >= 3 ? 'active' : ''}`}>
+          <span className="step-img">③</span>
+          <span className="step-name">Оплата</span>
+        </button>
+        <button className={`step ${currentStep >= 4 ? 'active' : ''}`}>
+          <span className="step-img">④</span>
+          <span className="step-name">Проверка</span>
+        </button>
       </div>
       <div className="content-order-container">
         <div className="section-search">
-          <SearchTicketsWithFilters />
+          {showTripDetails ? (
+               <TripDetails />
+            ) : (
+              <SearchTicketsWithFilters />
+            )}
           <LastTickets />
         </div>
         <div className="content-order">
-          {showSelectSeats ? (
-            // <SelectSeats direction={selectedTicket?.departure} />
+          {showPassengerCards ? (
+                <PassengerCards />
+          ) : showSelectSeats ? (
               <div className="select-seats-common-container">
                 {selectedTicket && (
                   <>
-                    <SelectSeats direction={selectedTicket.departure} />
-                    <SelectSeats direction={selectedTicket.arrival} />
-                    <Button label="Далее" className="btn-main"/>
+                    <DirectionProvider> 
+                      <SelectSeats directionType="departure" direction={selectedTicket.departure} />
+                    </DirectionProvider> 
+                    <DirectionProvider> 
+                      <SelectSeats directionType="arrival" direction={selectedTicket.arrival} />
+                    </DirectionProvider> 
+                      <Button label="Далее" className="btn-main" onClick={handleShowPassengerCards} />
                   </>
                 )}
               </div>

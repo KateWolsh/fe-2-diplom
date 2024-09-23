@@ -1,0 +1,9 @@
+.passenger-cards-container {
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    gap: 2%;
+
+    position: relative;
+
+}

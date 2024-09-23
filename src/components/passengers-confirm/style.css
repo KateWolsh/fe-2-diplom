@@ -1,0 +1,111 @@
+.passengers-confirm-container {
+    width: 961px;
+    border: 1px solid #C4C4C4;
+    background: #FFFFFF;
+    opacity: 1;
+    box-sizing: border-box;
+}
+
+.passengers-confirm-header {
+    padding: 28px;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 35.16px;
+    text-align: left;
+
+}
+
+.passengers-confirm-decore-line {
+    width: calc(100% - 1px);
+    border: 1px solid #928F94;
+}
+
+.passengers-items-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 50px;
+    padding: 30px 0px;
+    box-sizing: border-box;
+}
+
+.photo-container,
+.information-conainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-container .avatar {
+    width: 68px;
+    margin-bottom: 17px;
+}
+
+.passenger-item {
+    display: flex;
+    padding: 0 30px;
+}
+
+.information-conainer {
+    gap: 10px;
+    margin-left: 35px;
+}
+
+.information-conainer .all-name {
+    font-size: 18px;
+    font-weight: 400;
+    text-align: left;
+    color: #292929;
+}
+
+.information-conainer span {
+    color: #928F94;
+}
+
+.passengers-confirm-container .decore {
+    border: 1px solid #E5E5E5;
+}
+
+.passengers-confirm-container .total-price {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 2%;
+}
+
+.total-price .header {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 35.16px;
+    text-align: left;
+}
+
+.total-price span {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 35.16px;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.type-of-payment-container {
+    margin-top: 10px;
+}
+
+.type-of-payment-header {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 35.16px;
+    text-align: left;
+    padding: 2%;
+}
+
+.type-of-payment-container .type {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    padding: 2%;
+}
+.type-of-payment-container span {
+    font-size: 24px;
+    line-height: 28.13px;
+    text-align: left;
+}

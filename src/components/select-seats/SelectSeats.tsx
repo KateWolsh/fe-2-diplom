@@ -8,23 +8,25 @@ import { getSeats } from '../../api/getSeats'
 import { useEffect, useState } from 'react';
 import { useSearchContext } from '../../hooks/useSearchContext '
 import { ICoachInfo, ISelectedSeatsProps } from '../../types';
+import { useOrderContext } from '../../hooks/useOrderContext'
+import { useDirectionContext } from '../../hooks/useDirectionContext';
   
-export const SelectSeats = ( {direction}: ISelectedSeatsProps) => {
+export const SelectSeats = ( {direction, directionType}: ISelectedSeatsProps) => {
+
     const { _id, train, from, to } = direction;
     const { hours, minutes } = getDuration(from.datetime, to.datetime);
     const { filters } = useSearchContext()
     const [coaches, setCoaches] = useState([])
     const [availableSeats, setAvalableSeats] = useState(0)
-    const [adultsCount, setAdultsCount] = useState(0);
-    const [kidsCount, setKidsCount] = useState(0);
+    const [adultsTicketsCount, setAdultsTicketsCount] = useState(0);
+    const [kidsTicketsCount, setKidsTicketsCount] = useState(0);
+
+    const { setAdultsCount, setKidsCount } = useOrderContext();
+    const { setIsArrival, setIsDeparture } = useDirectionContext()
 
     const buildParams = () => {
        return {
         ...(filters.have_wifi && { have_wifi: filters.have_wifi }),
-        ...(filters.have_first_class && { have_first_class: filters.have_first_class }),
-        ...(filters.have_second_class && { have_second_class: filters.have_second_class }),
-        ...(filters.have_third_class && { have_third_class: filters.have_third_class }),
-        ...(filters.have_fourth_class && { have_fourth_class: filters.have_fourth_class }),
         ...(filters.have_express && { have_express: filters.have_express })    
         }
     }
@@ -37,7 +39,10 @@ export const SelectSeats = ( {direction}: ISelectedSeatsProps) => {
         try {
             const fetchedCoaches = await getSeats(_id, buildParams());
             console.log("Полученные данные сидений:", fetchedCoaches);
-            setCoaches(fetchedCoaches); // Обновляем состояние с полученными данными
+            setCoaches(fetchedCoaches);
+            if (fetchedCoaches.length > 0) {
+                setAvalableSeats(fetchedCoaches[0].seats.length);
+            }
         } catch (error) {
             console.error("Ошибка при запросе:", error);
             // setError('Ошибка при загрузке билетов. Попробуйте позже.');
@@ -47,14 +52,28 @@ export const SelectSeats = ( {direction}: ISelectedSeatsProps) => {
         };
 
         fetchAvalableSeats();
-    }, [filters.have_wifi, filters.have_first_class, filters.have_second_class, filters.have_third_class, filters.have_fourth_class, filters.have_express]);
 
-    const totalSeats = adultsCount + kidsCount;
-    const remainingSeats = availableSeats - totalSeats;
+    }, [filters.have_wifi, filters.have_express]);
+
+    const totalSeatsCount  = adultsTicketsCount + kidsTicketsCount;
+    const remainingSeats = availableSeats - totalSeatsCount;
+
+    useEffect(() => {
+        setAdultsCount(adultsTicketsCount);
+        setKidsCount(kidsTicketsCount)
+    }, [adultsTicketsCount, kidsTicketsCount]);
 
     const onCoachSelection = (coach: ICoachInfo) => {
         setAvalableSeats(coach.seats.length);
     };
+
+    useEffect(() => { 
+        if (directionType === 'departure') { 
+          setIsDeparture(true); 
+        } else { 
+          setIsArrival(true); 
+        } 
+      }, [directionType])
 
     return (
         <div className="select-seats-container">
@@ -97,7 +116,7 @@ export const SelectSeats = ( {direction}: ISelectedSeatsProps) => {
                             <InputText  
                                 className="input-count-seats" 
                                 aria-label='fff'
-                                onChange={(e) => setAdultsCount(parseInt(e.target.value) || 0)}
+                                onChange={(e) => setAdultsTicketsCount(parseInt(e.target.value) || 0)}
                             />
                         </div>
                         <span className="clue-adults">Можно добавить еще {remainingSeats} пассажиров</span>
@@ -108,7 +127,7 @@ export const SelectSeats = ( {direction}: ISelectedSeatsProps) => {
                             <InputText  
                                 className="input-count-seats" 
                                 aria-label='fff'
-                                onChange={(e) => setKidsCount(parseInt(e.target.value) || 0)}
+                                onChange={(e) => setKidsTicketsCount(parseInt(e.target.value) || 0)}
                             />
                         </div>
                         <span className="clue-kids">Можно добавить еще {remainingSeats} детей до 10 лет.Свое место в вагоне, как у взрослых, но дешевле 

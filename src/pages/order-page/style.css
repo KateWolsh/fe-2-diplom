@@ -22,24 +22,29 @@
 
 .step-container {
   display: flex;
+  justify-content: space-between;
 }
 
 .step {
   all: unset;
   cursor: pointer;
-  background: #FFA800;
   color: #FFFFFF;
+  background-color: #3E3C41;
   font-size: 24px;
   line-height: 98px;
   height: 98px;
-  position: relative;
   text-align: center;
-  width: 620px;
+  flex: 1;
+  position: relative;
+}
+
+.step.active {
+  background-color: #FFA800;
 }
 
 .step:after {
   border-bottom: 49px solid transparent;
-  border-left: 30px solid #FFA800;
+  border-left: 30px solid #3E3C41;
   border-top: 49px solid transparent;
   content: '';
   height: 0;
@@ -61,6 +66,27 @@
   top: 0;
   width: 0;
   z-index: 2;
+}
+
+.step:nth-child(4):after {
+  content: none;
+}
+
+.step.active:after {
+  border-left-color: #FFA800;
+}
+
+.step.active:before {
+  border-left-color: #FFE3A1;
+}
+
+.step-img {
+   font-size: 50px;
+}
+
+.step-name {
+  font-size: 40px;
+  margin-left: 20px;
 }
 
 .order-page .search-form {

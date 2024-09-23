@@ -1,0 +1,213 @@
+.trip-detail-contsiner {
+    width: 360px;
+    height: 1279px;
+    background: #3E3C41;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+
+.trip-detail-header {
+    font-size: 30px;
+    font-weight: 500;
+    color: #E5E5E5;
+    text-align: center;
+}
+
+.trip-detail-header-container {
+    display: flex;
+    justify-content: center;
+    margin: 35px 44px;
+}
+
+.trip-detail-decore-line {
+    width: 360px;
+    border: 1px solid #E5E5E5
+}
+
+.trip-detail-there-container,
+.trip-detail-back-container {
+    padding: 22px 28px;
+}
+
+.trip-detail-there-header span {
+    font-size: 30px;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-left: 15px;
+}
+
+.trip-detail-there-header .date-there {
+    font-size: 18px;
+}
+
+.times-in-way {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 130px;
+    left: 138px;
+}
+
+.times-in-way span {
+    font-size: 18px;
+    font-weight: 400;
+    color: #E5E5E5;
+    margin-left: -30px;
+}
+
+.times-in-way img {
+    width: 30px;
+}
+
+.trip-detail-about-train,
+.trip-detail-about-direction {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    padding-top: 35px;
+}
+
+.number-train-header,
+.name-train-header {
+    text-align: left;
+    color: #E5E5E5;
+    font-size: 18px;
+}
+
+.trip-detail-about-train .number-train {
+    text-align: right;
+    color: #E5E5E5;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.name-train {
+    text-align: right;
+    color: #E5E5E5;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.name-train {
+    display: flex;
+    flex-direction: column;
+}
+
+.trip-detail-about-direction {
+    padding-top: 24px;
+}
+
+.name-city {
+    display: flex;
+    flex-direction: column;
+}
+
+.trip-detail-about-direction {
+    grid-template-columns: 2fr 2fr;
+    gap: 66px;
+}
+
+.date-time-container,
+.spots-name-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+}
+
+.from {
+    text-align: left;
+}
+
+.to {
+    text-align: right;
+}
+
+.trip-detail-about-direction .time {
+    font-size: 24px;
+    font-weight: 400;
+    color: #FFFFFF;
+    margin-bottom: 5px;
+}
+
+.trip-detail-about-direction .date {
+    font-size: 18px;
+    font-weight: 400;
+    color: #928F94;
+}
+
+.trip-detail-about-direction .city {
+    font-size: 18px;
+    font-weight: 400;
+    color: #E5E5E5;
+}
+
+.trip-detail-about-direction .station {
+    font-size: 18px;
+    font-weight: 400;
+    color: #928F94;
+}
+
+.about-passengers-container {
+    padding: 22px 28px;
+}
+
+.about-passengers-header {
+    padding: 14px 29px;
+}
+
+.about-passengers-header span {
+    font-size: 30px;
+    line-height: 35.16px;
+    text-align: left;
+    color: #FFFFFF;
+    margin-left: 15px;
+}
+
+.price-adults-kids-container {
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+}
+
+.adults-kids-header,
+.price-kids-adults {
+    display: flex;
+    flex-direction: column;
+}
+
+.adults-kids-header {
+    text-align: left;
+    font-size: 18px;
+    font-weight: 400;
+    color: #E5E5E5;
+    gap: 15px;
+}
+
+.price-kids-adults {
+    text-align: right;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FFFFFF;
+    gap: 15px;
+}
+
+.common-price {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 22px 28px;
+}
+
+.common-price-header {
+    font-size: 30px;
+    font-weight: 700;
+    text-align: left;
+    color: #FFFFFF;
+    margin-top: 15px;
+}
+
+.common-price-count {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: right;
+    color: #FFA800;
+}

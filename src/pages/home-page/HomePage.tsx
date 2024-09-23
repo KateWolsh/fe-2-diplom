@@ -7,7 +7,7 @@ import HowItWorks from "../home-page/how-it-works/HowItWorks.tsx";
 import Reviews from "../home-page/reviews/Reviews.tsx";
 import MainBanner from "../../img/MainBanner.png"
 
-function HomePage() {
+export const HomePage = () => {
 
   return (
     <div className="home-page">
@@ -17,9 +17,15 @@ function HomePage() {
         <SearchForm/>
       </div>
       <div className="yellow-strip"></div>
-      <AboutUs />
-      <HowItWorks />
-      <Reviews />
+      <div id="about-us">
+        <AboutUs />
+      </div>
+      <div id="how-it-works">
+        <HowItWorks />
+      </div>
+      <div id="reviews">
+        <Reviews />
+      </div>
       <Footer />
     </div>
   )

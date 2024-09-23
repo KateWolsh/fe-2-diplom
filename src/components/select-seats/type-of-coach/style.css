@@ -39,23 +39,20 @@
 
 .p-tabview-nav li.p-highlight {
     background-color: #FFA800;
-    ; /* Цвет фона активного таба */
 }
 
 .p-tabview-nav li.p-highlight .custom-icon {
     filter: brightness(0) saturate(100%) invert(75%) sepia(66%) saturate(3484%) hue-rotate(356deg) brightness(101%) contrast(102%);
-    /* Применяем фильтр, чтобы изменить цвет иконки на оранжевый */
 }
 
 .p-tabview-nav li.p-highlight .tab-label {
     color: #FFA800;
-    ; /* Цвет текста выбранного таба */
 }
 
 .p-tabview-nav li {
-    border-bottom: none; /* Убираем нижнюю границу */
+    border-bottom: none;
 }
 
 .p-tabview-nav-link {
-    border-bottom: none; /* Убираем нижнюю границу у каждого таба */
+    border-bottom: none;
 }

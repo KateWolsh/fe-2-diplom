@@ -1,0 +1,116 @@
+.order-confirmation-container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #C4C4C4;
+    width: 1404px;
+    position: relative;
+    top: -250px;
+    left: 200px;
+    opacity: 1000;
+    background-color: #FFFFFF;
+}
+
+.order-confirmation-header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    align-items: center;
+    
+}
+
+.number-of-order {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 42.19px;
+    text-align: left;
+}
+
+.order-confirmation-header-container .common-price {
+    display: flex;
+    padding: 0;
+    align-items: flex-end;
+}
+
+.order-confirmation-header-container .common {
+    font-size: 36px;
+    font-weight: 700;
+    color: #928F94;
+}
+
+.order-confirmation-header-container .price {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.instruction-container {
+    display: flex;
+    align-items: center;
+    gap: 10%;
+    padding: 3%;
+    background-color: #F4F3F6;
+    height: 312px;
+
+}
+
+.instruction-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 205px;
+    margin-left: 5rem;
+}
+
+.instruction-container img {
+    margin-bottom: 10px;
+    margin-left: 0;
+    width: 154px;
+}
+
+.information-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5% 10%;
+    margin-bottom: 40px;
+}
+
+.information-container .name-user {
+    font-size: 36px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.information-container p {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.rate-order-container {
+    width: 1404px;
+    height: 161px;
+    background-color: #FFA800E0;
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    align-items: center;
+}
+
+.rate-order-container img {
+    width: 328px;
+    margin-bottom: 40px;
+}
+
+.rate-order-container span {
+    font-size: 24px;
+    font-weight: 400;
+    text-align: left;
+}
+
+.rate-order {
+    display: flex;
+    align-items: center;
+}

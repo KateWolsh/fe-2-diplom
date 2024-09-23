@@ -3,13 +3,20 @@ import './style.css';
 import { Tooltip } from 'primereact/tooltip';
 import { IAvailableSeatsInfo, ITicketProps } from '../../types';
 import { formatTime } from '../../helpers/formatTime';
+import { useTicketContext } from '../../hooks/useTicketContext';
 
 export const Ticket = ({ item, onSelectSeatsClick  }: ITicketProps) => {
     const { departure, arrival} = item;
+    const { setSelectedTicket } = useTicketContext();
 
-    // Массив допустимых классов мест
     const seatClasses: Array<keyof IAvailableSeatsInfo> = ["first", "second", "third", "fourth"];
 
+    const combinedClickHandler = () => {
+        setSelectedTicket(item);
+        if (onSelectSeatsClick) {
+          onSelectSeatsClick();
+        }
+      };
     return (
         <div className="ticket">
             <div className="info-train-container">
@@ -31,7 +38,6 @@ export const Ticket = ({ item, onSelectSeatsClick  }: ITicketProps) => {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <span style={{ color: "#C4C4C4" }} className="travel-time">
-                            {/* Здесь можно вычислить продолжительность поездки */}
                         </span>
                         <img style={{width: "30px", height: "20px"}} src="src/icons/arrow.svg" alt="icon-train" />
                     </div>
@@ -49,7 +55,6 @@ export const Ticket = ({ item, onSelectSeatsClick  }: ITicketProps) => {
                     </div>
                     <div style={{ display: "flex", flexDirection: "column" }}>
                         <span style={{ color: "#C4C4C4" }} className="travel-time">
-                            {/* Здесь можно вычислить продолжительность поездки */}
                         </span>
                         <img style={{width: "30px", height: "20px"}} src="src/icons/arrow.svg" alt="icon-train" />
                     </div>
@@ -87,7 +92,7 @@ export const Ticket = ({ item, onSelectSeatsClick  }: ITicketProps) => {
                 <Button 
                     className="btn-choose-seats"
                     label="Выбрать места" 
-                    onClick={onSelectSeatsClick} // Передача события клика
+                    onClick={combinedClickHandler}
                 />
             </div>
         </div>
